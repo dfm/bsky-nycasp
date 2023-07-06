@@ -1,0 +1,16 @@
+[tool.black]
+target-version = ["py38", "py39"]
+line-length = 88
+
+[tool.ruff]
+src = ["src"]
+line-length = 89
+target-version = "py38"
+select = ["F", "I", "E", "W", "YTT", "B", "Q", "PLE", "PLW"]
+ignore = [
+    "B023", # Allow using global variables in lambdas
+]
+exclude = []
+
+[tool.ruff.isort]
+combine-as-imports = true
