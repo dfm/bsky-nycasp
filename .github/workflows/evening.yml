@@ -2,7 +2,7 @@ name: Evening post
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 16 * * *"
+    - cron: "0 20 * * *"
 
 jobs:
   post:
