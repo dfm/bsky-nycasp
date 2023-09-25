@@ -48,7 +48,7 @@ def get_asp_status(date: datetime.date | None = None) -> str:
             update = f"will be suspended tomorrow, {date_human}"
             msg = msg.replace("is suspended", update)
             msg = msg.replace("are suspended", update)
-            msg = msg.replace("are in", "will be")
+            msg = msg.replace("are in", "will be in")
 
     return msg
 
