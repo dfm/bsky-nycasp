@@ -1,2 +1,2 @@
 requests==2.31.0
-atproto==0.0.26
+atproto==0.0.28
