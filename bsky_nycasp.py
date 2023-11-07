@@ -39,10 +39,10 @@ def get_asp_status(date: datetime.date | None = None) -> str:
             msg = f"NYCASP will be in effect tomorrow, {date_human}."
 
     else:
-        msg = msg.replace("Alternate side parking", "NYCASP rules")
+        msg = msg.replace("Alternate side parking", "NYCASP")
         if today:
             date_human = date.strftime("%B %-d")
-            msg = msg.replace("suspended", f"suspended today, {date_human}")
+            msg = msg.replace("suspended", f"suspended today, {date_human},")
         else:
             date_human = date.strftime("%A, %B %-d")
             update = f"will be suspended tomorrow, {date_human}"
