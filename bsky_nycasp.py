@@ -1,9 +1,19 @@
 import argparse
 import datetime
 import os
+from zoneinfo import ZoneInfo
 
 import requests
 from atproto import Client
+
+NYC_TZ = ZoneInfo("America/New_York")
+
+
+def nyc_today() -> datetime.date:
+    # GitHub Actions runners use UTC, and scheduled runs are often delayed by
+    # hours, so the evening job can start after midnight UTC. Always use the
+    # current date in New York rather than the runner's local date.
+    return datetime.datetime.now(NYC_TZ).date()
 
 
 def download_data(date: datetime.date) -> str:
@@ -33,7 +43,7 @@ def get_asp_status(date: datetime.date | None = None) -> str:
     # Format the target date
     today = date is None
     if today:
-        date = datetime.date.today()
+        date = nyc_today()
     assert date is not None
 
     msg = download_data(date)
@@ -70,7 +80,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     if args.tomorrow:
-        msg = get_asp_status(datetime.date.today() + datetime.timedelta(days=1))
+        msg = get_asp_status(nyc_today() + datetime.timedelta(days=1))
     else:
         msg = get_asp_status()
 
