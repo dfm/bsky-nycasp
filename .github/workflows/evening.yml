@@ -2,7 +2,8 @@ name: Evening post
 on:
   workflow_dispatch:
   schedule:
-    - cron: "37 19 * * *"
+    - cron: "37 15 * * *"
+      timezone: "America/New_York"
 
 jobs:
   post:
